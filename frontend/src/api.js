@@ -1,4 +1,6 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+// If VITE_API_URL is not set (or is wrong), we fall back to same-origin.
+// On Netlify, `netlify.toml` proxies `/api/*` to the backend (no CORS headache).
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 // Small helper to keep API calls simple and reusable
 async function request(path, options = {}) {
