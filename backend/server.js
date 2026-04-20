@@ -23,13 +23,15 @@ app.use("/api/notes", noteRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-async function startServer() {
-  await connectDB();
+// Render needs the server to bind a port quickly.
+// So we start listening first, then connect to DB.
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
-
-startServer();
+connectDB().catch((err) => {
+  // Keep server alive (port stays open) so Render doesn't fail "no open ports".
+  // If DB is wrong, you will see this error in logs.
+  console.error("DB connection failed. Fix MONGO_URI and redeploy.");
+});
 
