@@ -78,7 +78,7 @@ Frontend runs on the URL shown in terminal (usually `http://localhost:5173`)
 ### Frontend on Vercel / Netlify
 - Set environment variable:
   - `VITE_API_URL=https://your-backend.onrender.com`
-- Set root directory: `frontend`
+- Set root directory: `frontend` (or keep repo root; `netlify.toml` already sets base/publish)
 - Build command: `npm run build`
 - Output directory: `dist`
 

@@ -1,0 +1,12 @@
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+# Single Page App (React) routing:
+# If user refreshes /some-page, Netlify should still serve index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
